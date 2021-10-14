@@ -20,7 +20,7 @@
       line-height: 16px;
       text-transform: uppercase;
       letter-spacing: 5px;
-      color: $text;
+      color: $white;
       &:hover {
         color: #fff;
       }
@@ -189,7 +189,7 @@
   margin-bottom: 30px;
   background: $black;
   .article-image-first {
-    position: relative;
+    position: absolute;
     display: flex;
     align-items: center;
     min-height: 450px;
@@ -272,9 +272,9 @@
   .article-head {
     background: $black;
   }
-  .article-image {
+  .article-image  {
     position: relative;
-    display: block;
+    display: inline;
     margin-bottom: 20px;
     background-size: cover;
     background-position: center;

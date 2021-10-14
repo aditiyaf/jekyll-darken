@@ -1,5 +1,6 @@
 // Tags
 .tags-list {
+  border-radius: 20px;
   display: flex;
   flex-wrap: wrap;
   margin: 40px 0;
@@ -9,6 +10,7 @@
     margin: 5px;
   }
   .tags-link {
+    border-radius: 20px;
     display: inline-block;
     padding: 7px 12px;
     font-size: 14px;

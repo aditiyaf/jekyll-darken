@@ -1,26 +1,104 @@
 ---
 layout: post
-title:  The most popular mistakes
-date:   2018-08-23 16:05:55 +0300
-image:  01.jpg
-tags:   [Lifehacks]
+title:  Manipulasi Direktori Menggunakan PHP
+date:   2021-10-14 13:25:55 +0700
+image:  php1.png
+tags:   [PHP]
 ---
-Meditation tacos narwhal gochujang, shaman ramps green vegan humblebrag whatever microdosing juice poutine migas occupy fingerstache kickstarter disrupt brunch. Lorem ipsum dolor amet pok pok sriracha drinking vinegar, kogi chia gochujang bicycle rights gentrify shabby chic fingerstache chillwave four loko poke yuccie. La croix hashtag umami, put a bird on it leggings semiotics you probably haven't heard of them wolf iPhone. Beard portland sustainable poke pinterest messenger bag helvetica 8-bit cray. Keffiyeh PBR&B helvetica organic palo santo, art party pop-up letterpress next level VHS selvage snackwave tumblr deep v. Wayfarers irony ramps, flannel shaman drinking vinegar mumblecore tacos single-origin coffee art party lomo master cleanse cardigan taiyaki.
+Direktori adalah lokasi penyimpanan pada file system yang dapat berisi kumpulan file dan direktori.
 
-Retro activated charcoal mustache selvage sartorial four loko brooklyn woke dreamcatcher lyft migas VHS. Bitters celiac flannel schlitz aesthetic echo park polaroid. Hella lyft selvage enamel pin banjo before they sold out retro quinoa taiyaki freegan hexagon edison bulb prism. Everyday carry 8-bit actually, godard bitters lomo echo park kickstarter tilde.
+Ada beberapa fungsi yang dapat digunakan di PHP untuk manipulasi direktori:
 
-Gluten-free bicycle rights kogi ramps chartreuse lyft. Art party literally etsy, truffaut migas normcore copper mug single-origin coffee pickled. Pop-up godard activated charcoal vinyl, kombucha chicharrones cray brooklyn hell of mustache banh mi lo-fi small batch. Ugh literally cred gluten-free. Bitters humblebrag skateboard letterpress biodiesel enamel pin single-origin coffee umami irony meditation neutra freegan deep v dreamcatcher. Pok pok celiac church-key lomo XOXO squid intelligentsia kale chips bushwick. Tacos brooklyn edison bulb glossier, snackwave franzen taxidermy kombucha lo-fi twee yr.
+> 1. Fungsi <b>mkdir()</b> untuk membuat direktori;
+> 2. Fungsi <b>scandir()</b> untuk melihat isi direktori;
+> 3. Fungsi <b>rmdir()</b> untuk menghapus direktori;
+> 4. Fungsi <b>rename()</b> untuk mengubah nama direktori;
 
-![]({{site.baseurl}}/img/04.jpg)
+so, mari kita bahas fungsi masing-masing dari perintah diatas.
 
-Typewriter jean shorts literally godard la croix. Put a bird on it wayfarers distillery taiyaki knausgaard +1, hella fixie. Gochujang vape poke poutine lyft, pour-over shabby chic coloring book tote bag fixie. Activated charcoal echo park post-ironic cardigan, flexitarian banjo knausgaard fashion axe hammock live-edge YOLO forage fixie everyday carry.
+### 1. Membuat Direktori di PHP
 
-Kickstarter +1 brunch hell of twee asymmetrical cardigan hella forage humblebrag. Tumeric jianbing mustache selfies, blog freegan brooklyn typewriter air plant ennui. Poke snackwave chia vaporware normcore. Chambray brooklyn poutine polaroid. Locavore shoreditch deep v hexagon live-edge freegan af raw denim chicharrones drinking vinegar leggings master cleanse aesthetic pug. Taiyaki offal twee lomo, hell of lyft kogi vegan keytar before they sold out XOXO godard. Slow-carb quinoa pitchfork tumblr biodiesel.
+Fungsi yang digunakan untuk membuat direktori di PHP adalah <b>mkdir()</b>. Fungsi ini sama maksudnya dengan perintah mkdir di Linux dan <b>md</b> pada Windows.
 
-Live-edge williamsburg semiotics organic. Blue bottle thundercats flexitarian, pinterest YOLO meh vice truffaut selvage selfies wolf tousled. Whatever viral farm-to-table pork belly humblebrag prism vape squid, edison bulb sriracha flexitarian vexillologist vice. Locavore blog wolf bicycle rights yr literally vaporware vinyl.
+Parameter yang diberikan ke fungsi <b>mkdir()</b> berupa string. Parameter ini yang akan menjadi nama direktori.
 
-Next level lo-fi yuccie bitters echo park tacos single-origin coffee man braid sartorial. Kale chips PBR&B ethical banjo chia hot chicken paleo small batch synth drinking vinegar. Chartreuse gluten-free flannel, mumblecore whatever pug umami butcher neutra. Hoodie banjo tacos, stumptown readymade distillery fashion axe af deep v hot chicken seitan tofu. Listicle vape portland, art party mlkshk yuccie YOLO austin 8-bit. Vaporware vinyl artisan, roof party deep v banjo cronut.
+###### Contoh :
+ 
+ {% highlight js %}
+ <?php mkdir("direktori_baru"); ?>
+ {% endhighlight %}
+ 
+ Atau kita juga bisa memberikan alamat path, dan atributnya:
+ 
+ {% highlight js %}
+ <?php mkdir("./direktori_lama/contoh/dir", 0777, true); ?>
+  {% endhighlight %}
+  
+##### Keterangan :
+  
+  > Parameter <b>0777</b> adalah hak akses yang kita berikan kepada direktori;
+  > Parameter <b>true</b> artinya kita mengizinkan pembuatan direktori secara rekursif.
+  
+### 2.Melihat isi Direktori di PHP
 
-Letterpress next level master cleanse mlkshk echo park celiac chillwave cray 90's chia deep v. Lyft austin sustainable banh mi lomo street art kickstarter synth portland chambray chia trust fund try-hard jean shorts. Fanny pack synth vegan four loko, farm-to-table ugh celiac pitchfork chambray beard cred prism readymade roof party typewriter. Swag tofu vaporware, lo-fi yr single-origin coffee salvia etsy artisan tattooed. Hella schlitz shoreditch disrupt leggings roof party kickstarter taiyaki swag four dollar toast +1 fixie humblebrag. Pour-over air plant literally bespoke hella raw denim. Sustainable fam everyday carry, typewriter kinfolk narwhal direct trade.
+Fungsi yang digunakan untuk melihat isi direktori adalah <b>scandir()</b>. Fungsi ini akan mengembalikan nilai berupa array yang berisi nama-nama dari isi direktori.
 
-Man braid sustainable affogato pinterest leggings. Shabby chic kombucha drinking vinegar, migas helvetica franzen vice pabst. Fashion axe YOLO hexagon ramps. Keffiyeh gluten-free williamsburg kombucha. Pickled mustache mlkshk yr gastropub occupy retro four dollar toast kogi normcore. Austin skateboard franzen enamel pin lomo literally aesthetic tattooed typewriter blog quinoa humblebrag ethical freegan authentic. Vaporware crucifix 90's, venmo adaptogen bitters migas.
+###### Contoh :
+
+ {% highlight js %}
+<?php
+$dir = scandir("direktori_lawas");
+print_r($dir);
+?>
+ {% endhighlight %}
+ 
+ Maka variabel <b>$dir</b> akan berisi:
+ 
+  {% highlight js %}
+Array
+(
+    [0] => .
+    [1] => ..
+    [2] => contoh
+)
+ {% endhighlight %}
+ 
+ Dengan begini, kita bisa memanfaatkan perulangan untuk menampilka semua isi dari direktori.
+
+### 3.Menghapus Direktori di PHP
+
+Menghapus direktori dapat dilakukan dengan fungsi <b>rmdir()</b>. Fungsi ini memiliki parameter berupa string. Parameter tersebut adalah nama direktori yang ingin dihapus.
+
+###### Contoh :
+
+ {% highlight js %}
+<?php rmdir("nama_direktori"); ?>
+ {% endhighlight %}
+ 
+ Fungsi <b>rmdir()</b> akan menghasilkan error apabila direktorinya tidak ditemukan. Untuk mengatasi ini, kita bisa menggunakan fungsi <b>is_dir()</b> untuk mengecek direktorinya ada atau tidak.
+ 
+###### Contoh :
+
+ {% highlight js %}
+<?php
+$nama_dir = "direktori_baru";
+
+if( is_dir($nama_dir) ) {
+    rmdir($nama_dir); 
+} else {
+    echo "Direktori tidak ditemukan"; 
+}
+?>
+ {% endhighlight %}
+ 
+### 4.Mengubah Nama Direktori di PHP
+
+Kita dapat merubah nama direktori dengan fungsi <b>rename()</b>. Fungsi ini tidak hanya untuk merubah nama direktori, mengubah nama file juga dapat menggunakan fungsi ini.
+
+Ada dua parameter yang harus diberikan kepada fungsi ini. Pertama, nama file atau direktori yang akan diubah. Kedua, nama barunya.
+
+###### Contoh :
+
+ {% highlight js %}
+<?php rename("nama_lama", "“nama_baru"); ?>
+ {% endhighlight %}
